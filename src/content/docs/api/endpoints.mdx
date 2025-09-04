@@ -1,0 +1,129 @@
+---
+title: Endpoints Reference
+description: Detailed reference for all available endpoints in the Nimbus API.
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+This page provides a detailed breakdown of all available endpoints. The base URL for all API requests is:
+
+`https://api.nimbus.com/v1`
+
+---
+
+## Get Current Weather
+
+Returns the current weather conditions for a specified city.
+
+`GET /weather/current`
+
+### Parameters
+
+| Parameter | Type   | Required | Description                             |
+| :-------- | :----- | :------- | :-------------------------------------- |
+| `city`    | string | Yes      | The name of the city (e.g., `Lviv`).    |
+| `key`     | string | Yes      | Your unique API Key for authentication. |
+
+### Example Request
+
+<Tabs>
+  <TabItem label="cURL">
+    ```bash
+    curl -X GET "https://api.nimbus.com/v1/weather/current?city=Lviv&key=YOUR_API_KEY"
+    ```
+  </TabItem>
+  <TabItem label="JavaScript">
+    ```javascript
+    fetch('https://api.nimbus.com/v1/weather/current?city=Lviv&key=YOUR_API_KEY')
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+</Tabs>
+
+### Example Response (`200 OK`)
+
+```json
+{
+  "request_time": "2025-09-04T10:00:00Z",
+  "city": "Lviv",
+  "temperature_celsius": 19,
+  "condition": "Cloudy with outbreaks of rain",
+  "wind_kph": 12,
+  "humidity_percent": 65
+}
+```
+
+---
+
+## Get 5-Day Forecast
+
+Returns a 5-day weather forecast for a specified city.
+
+`GET /weather/forecast`
+
+### Parameters
+
+| Parameter | Type   | Required | Description                             |
+| :-------- | :----- | :------- | :-------------------------------------- |
+| `city`    | string | Yes      | The name of the city (e.g., `Odesa`).   |
+| `key`     | string | Yes      | Your unique API Key for authentication. |
+
+### Example Request
+
+<Tabs>
+  <TabItem label="cURL">
+    ```bash
+    curl -X GET "https://api.nimbus.com/v1/weather/forecast?city=Odesa&key=YOUR_API_KEY"
+    ```
+  </TabItem>
+  <TabItem label="JavaScript">
+    ```javascript
+    fetch('https://api.nimbus.com/v1/weather/forecast?city=Odesa&key=YOUR_API_KEY')
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+</Tabs>
+
+### Example Response (`200 OK`)
+
+```json
+{
+  "city": "Odesa",
+  "forecast": [
+    {
+      "date": "2025-09-05",
+      "max_temp_celsius": 24,
+      "min_temp_celsius": 18,
+      "condition": "Sunny"
+    },
+    {
+      "date": "2025-09-06",
+      "max_temp_celsius": 25,
+      "min_temp_celsius": 19,
+      "condition": "Sunny"
+    },
+    {
+      "date": "2025-09-07",
+      "max_temp_celsius": 23,
+      "min_temp_celsius": 17,
+      "condition": "Partly Cloudy"
+    },
+    {
+      "date": "2025-09-08",
+      "max_temp_celsius": 22,
+      "min_temp_celsius": 16,
+      "condition": "Showers"
+    },
+    {
+      "date": "2025-09-09",
+      "max_temp_celsius": 24,
+      "min_temp_celsius": 18,
+      "condition": "Sunny"
+    }
+  ]
+}
+```
