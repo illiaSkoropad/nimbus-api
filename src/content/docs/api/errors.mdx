@@ -1,0 +1,75 @@
+---
+title: Error Codes
+description: Understand the different error codes and responses from the Nimbus API.
+---
+
+The Nimbus API uses conventional HTTP status codes to indicate the success or failure of an API request. In general, codes in the `2xx` range indicate success, `4xx` range indicate a client-side error, and `5xx` range indicate a server-side error.
+
+## Error Response Body
+
+When a request fails, the API will return a JSON object containing two fields to help you debug the issue: `error` and `message`.
+
+```json
+{
+  "error": "Short error title",
+  "message": "A human-readable description of what went wrong."
+}
+```
+
+## HTTP Status Codes
+
+Below is a summary of the primary HTTP status codes used by the API.
+
+| Status Code | Title | Description |
+|-------------|-------|-------------|
+| 200 OK | Success | The request was successful. The response body will contain the requested data. |
+| 400 Bad Request | Bad Request | The server could not process the request due to a client error, often caused by a missing or malformed required parameter. |
+| 401 Unauthorized | Unauthorized | Authentication failed. The request is missing a valid key parameter or the provided key is incorrect. |
+| 404 Not Found | Not Found | The requested resource could not be found. This may happen if you request data for a city that does not exist in our database. |
+| 500 Internal Server Error | Internal Server Error | Something went wrong on our end. This is a rare event, but if it happens, please wait a moment and try again. |
+
+## Common Error Examples
+
+### 400 Bad Request
+
+```json
+{
+  "error": "Missing Parameter",
+  "message": "The 'city' parameter is required but was not provided."
+}
+```
+
+### 401 Unauthorized
+
+```json
+{
+  "error": "Invalid API Key",
+  "message": "The provided API key is invalid or has expired."
+}
+```
+
+### 404 Not Found
+
+```json
+{
+  "error": "City Not Found",
+  "message": "The specified city 'InvalidCity' was not found in our database."
+}
+```
+
+### 500 Internal Server Error
+
+```json
+{
+  "error": "Internal Server Error",
+  "message": "An unexpected error occurred. Please try again later."
+}
+```
+
+## Error Handling Best Practices
+
+- Always check the HTTP status code before processing the response
+- Use the `error` field for programmatic error handling
+- Display the `message` field to users for human-readable error descriptions
+- Implement retry logic for 5xx errors with exponential backoff
+- Cache successful responses to reduce API calls and potential errors
