@@ -7,6 +7,10 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Nimbus API Docs",
+      logo: {
+        src: "/src/assets/logo.png",
+        replacesTitle: true,
+      },
       social: [
         {
           icon: "github",
@@ -24,7 +28,7 @@ export default defineConfig({
           items: [
             {
               label: "Quick Start Guide",
-              link: "/getting-started/quick-start/",
+              link: "/getting-started/first-request/",
             },
           ],
         },
