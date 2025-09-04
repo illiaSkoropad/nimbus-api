@@ -1,0 +1,43 @@
+---
+title: Authentication
+description: Learn how to authenticate your requests to the Nimbus API.
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+All requests to the Nimbus API must be authenticated. We use a simple API Key method to grant access to your account.
+
+Requests without valid authentication will fail.
+
+## API Key Authentication
+
+To authenticate a request, you must include your unique **API Key** with every call you make. You can find your API key in your [Developer Dashboard](https://example.com/dashboard).
+
+The API key must be sent as a **query string parameter** named `key`.
+
+### Example
+
+Here is an example of a properly authenticated request to the `/weather/current` endpoint. Replace `YOUR_API_KEY` with your actual key.
+
+```bash
+https://api.nimbus.com/v1/weather/current?city=London&key=YOUR_API_KEY
+```
+
+## Security Best Practices
+
+**Keep your API Key secret:** Treat your API key like a password. Do not share it publicly or commit it to version control (e.g., Git).
+
+**Use environment variables:** Store your API key in an environment variable on your server and access it from your code.
+
+**Do not expose the key on the client-side:** Avoid embedding the key directly in public-facing HTML, JavaScript, or mobile application code. Make API calls from your backend server instead.
+
+<Aside type="danger" title="Unauthorized Requests">
+If you make a request with a missing or invalid API key, the server will return a 401 Unauthorized status code and the following JSON response:
+
+```json
+{
+  "error": "Authentication failed",
+  "message": "Missing or invalid API key provided."
+}
+```
+</Aside>
