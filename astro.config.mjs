@@ -11,6 +11,7 @@ export default defineConfig({
         src: "/src/assets/logo.png",
         replacesTitle: true,
       },
+      customCss: ["./src/styles/hero.css"],
       social: [
         {
           icon: "github",

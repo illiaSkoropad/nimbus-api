@@ -4,6 +4,9 @@ template: splash
 hero:
   title: A Modern Weather API for Your Projects
   tagline: Get fast and accurate weather data with our simple REST API. Integrate in minutes.
+  image:
+    alt: Nimbus API Hero Image
+    file: ../../assets/hero-image.png
   actions:
     - text: Quick Start
       link: /getting-started/first-request/
@@ -18,18 +21,16 @@ import { Card, CardGrid } from "@astrojs/starlight/components";
 **Nimbus API** is a service designed for simplicity and speed. We provide a reliable infrastructure so you can focus on building great products, not on collecting weather data.
 
 <CardGrid>
-  <Card
-    title="Quick Start"
-    icon="rocket"
-    href="/getting-started/first-request/"
-  >
-    Learn how to make your first request and get data in just 3 steps.
+  <Card title="Quick Start" icon="rocket">
+    Learn how to make your first request and get data in just 3 steps. [Get
+    Started →](/getting-started/first-request/)
   </Card>
-  <Card title="API Reference" icon="document" href="/api/endpoints/">
+  <Card title="API Reference" icon="document">
     A detailed description of all available endpoints, parameters, and example
-    responses.
+    responses. [View API Reference →](/api/endpoints/)
   </Card>
-  <Card title="Authentication" icon="setting" href="/api/authentication/">
+  <Card title="Authentication" icon="setting">
     Everything you need to know about using your API key to secure requests.
+    [Learn Authentication →](/api/authentication/)
   </Card>
 </CardGrid>
