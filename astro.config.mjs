@@ -17,8 +17,33 @@ export default defineConfig({
           attrs: {
             defer: true,
             src: "https://static.cloudflareinsights.com/beacon.min.js",
-            "data-cf-beacon": '{"token": "6d4340f6c1624f36adb7db807f1b56ae"}',
+            "data-cf-beacon": '{"token": "ВАШ_ТОКЕН_АНАЛІТИКИ"}',
           },
+        },
+        {
+          tag: "script",
+          attrs: {
+            async: true,
+            src: "https://tally.so/widgets/embed.js",
+          },
+        },
+        {
+          tag: "script",
+          content: `
+      window.TallyConfig = {
+        "formId": "w2pWxp",
+        "popup": {
+          "emoji": {
+            "text": "👋",
+            "animation": "wave"
+          },
+          "open": {
+            "trigger": "time",
+            "ms": 5000
+          }
+        }
+      };
+    `,
         },
       ],
       customCss: ["./src/styles/hero.css"],
