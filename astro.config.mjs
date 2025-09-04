@@ -14,7 +14,29 @@ export default defineConfig({
           href: "https://git.qix.sx/next-dev-illia-skoropad/nimbus-api",
         },
       ],
-      sidebar: [],
+      sidebar: [
+        {
+          label: "Introduction",
+          items: [{ label: "About Nimbus API", link: "/" }],
+        },
+        {
+          label: "Getting Started",
+          items: [
+            {
+              label: "Quick Start Guide",
+              link: "/getting-started/quick-start/",
+            },
+          ],
+        },
+        {
+          label: "API Reference",
+          items: [
+            { label: "Authentication", link: "/api/authentication/" },
+            { label: "Endpoints", link: "/api/endpoints/" },
+            { label: "Error Codes", link: "/api/errors/" },
+          ],
+        },
+      ],
     }),
   ],
 });
