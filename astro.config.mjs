@@ -11,6 +11,16 @@ export default defineConfig({
         src: "/src/assets/logo.png",
         replacesTitle: true,
       },
+      head: [
+        {
+          tag: "script",
+          attrs: {
+            defer: true,
+            src: "https://static.cloudflareinsights.com/beacon.min.js",
+            "data-cf-beacon": '{"token": "6d4340f6c1624f36adb7db807f1b56ae"}',
+          },
+        },
+      ],
       customCss: ["./src/styles/hero.css"],
       social: [
         {
